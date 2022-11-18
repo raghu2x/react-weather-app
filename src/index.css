@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  @apply hidden;
+}
+body {
+  @apply bg-gray-200;
+}
+.btn {
+  @apply font-semibold text-sm  outline-none text-white  w-[calc(100%-24px)]  py-3 px-3 tracking-wider transition-all  rounded-xl capitalize m-3;
+}
+.btn:hover {
+  @apply opacity-90;
+}
+.btn:disabled {
+  @apply bg-none bg-gray-300 !important;
+}
+.btn-primary {
+  @apply from-blue-500 to-cyan-500  bg-gradient-to-t;
+}
+
+input {
+  @apply h-12 font-semibold text-sm  outline-none  w-full  p-3 tracking-wider  border-2 rounded-xl;
+}
+/* input[type='password'] {
+  font: large Verdana, sans-serif;
+  letter-spacing: 1px;
+} */
+
+.MuiAlert-root {
+  @apply !p-0 !bg-transparent;
+}
+
+.link {
+  @apply flex items-center  p-3 border-l-4 border-transparent transition-all hover:text-blue-500 hover:bg-blue-100 hover:border-blue-500   gap-3 text-gray-700 cursor-pointer;
+}
+.link.active {
+  @apply text-blue-500 bg-blue-100 border-blue-500;
+}

@@ -1,7 +1,6 @@
 import axios from "axios";
 let AUTH_TOKEN = '';
 let baseURL = 'https://hiring-test.a2dweb.com';
-
 const api = axios.create({
   baseURL: baseURL,
   timeout: 1000,
@@ -55,4 +54,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+export { token, api };

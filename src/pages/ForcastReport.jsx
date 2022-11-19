@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import DayWeatherCard from '../compenents/DayWeatherCard';
-import api from '../axios';
+import { api } from '../axios';
 export default function WeatherCard() {
     let [forecast, setForecast] = useState([]);
     const cityId = localStorage.getItem('cityId');

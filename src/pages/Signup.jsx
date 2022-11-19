@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from '../controls/Input';
 import Button from '../controls/Button';
 import ErrorMessage from '../controls/ErrorMessage';
-import api from "../axios";
+import { api } from "../axios";
 
 export default function Signup() {
     const [name, setName] = useState('raghvendra');

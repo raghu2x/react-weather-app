@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import api from '../axios';
+import { api } from '../axios';
 export default function WeatherCard() {
     let [city, setCity] = useState({});
     let [forecast, setForecast] = useState({});
@@ -9,13 +9,13 @@ export default function WeatherCard() {
         async function fetchWeather() {
             let res = await api.get('/live-weather/' + cityId);
             let response = await api.get('/view-small-forecast/' + cityId);
-            setCity(() => res.data);
+            setCity(() => res.data || {});
             setForecast(() => response.data);
         }
         fetchWeather();
     }, []);
     return (
-        <div className="flex p-5 items-center justify-center h-screen">
+        <div className="flex p-5 items-center justify-center h-full">
             <div className=" p-6 bg-gray-50 bg-opacity-30 w-full max-w-[400px] rounded-lg flex flex-col items-center border border-white shadow-md">
                 <div className="flex flex-col items-center">
                     <span className=" font-medium text-lg">Today,{forecast?.time || '7.30 pm'}</span>

@@ -5,8 +5,12 @@
 ::-webkit-scrollbar {
   @apply hidden;
 }
+#root {
+  @apply h-full;
+}
+
 body {
-  @apply bg-gray-200;
+  @apply bg-gray-200 h-screen;
 }
 .btn {
   @apply font-semibold text-sm  outline-none text-white  w-[calc(100%-24px)]  py-3 px-3 tracking-wider transition-all  rounded-xl capitalize m-3;

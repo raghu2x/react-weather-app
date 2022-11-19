@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from '../controls/Input';
 import Button from '../controls/Button';
 import Checkbox from '../controls/Checkbox';
-import api from "../axios";
+import { api } from "../axios";
 import Alert from '@mui/material/Alert';
 function Login() {
     //email: demo@gmail.com
@@ -19,7 +19,7 @@ function Login() {
         if (!res.error) {
             localStorage.setItem('auth_token', res.token);
             localStorage.setItem('cityId', res?.liveWeather?.cityId);
-            navigate("/home");
+            navigate("/");
         } else {
             setErrorMessage(() => res.error);
         }

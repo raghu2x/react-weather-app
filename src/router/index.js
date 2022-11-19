@@ -8,6 +8,20 @@ import WeatherCard from '../compenents/WeatherCard';
 const router = createBrowserRouter([
     {
         path: "/",
+        element: <Home />,
+        children: [
+            {
+                path: "",
+                element: <WeatherCard />,
+            },
+            {
+                path: "forcast",
+                element: <ForcastReport />,
+            },
+        ]
+    },
+    {
+        path: "/",
         element: <AuthLayout />,
         children: [
             {
@@ -20,24 +34,6 @@ const router = createBrowserRouter([
             },
         ]
     },
-    {
-        path: "/",
-        element: <Home />,
-        children: [
-            {
-                path: "home",
-                element: <WeatherCard />,
-            },
-            {
-                path: "forcast",
-                element: <ForcastReport />,
-            },
-        ]
-    },
-    // {
-    //     path: "/forcast-report",
-    //     element: <ForcastReport />,
-    // },
 ]);
 
 export default router;

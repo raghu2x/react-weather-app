@@ -4,11 +4,12 @@ import LogoutPopup from '../compenents/LogoutPopup';
 import CitiesList from '../compenents/CitiesList';
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import "css-pro-layout/dist/css/css-pro-layout.min.css";
 function Home() {
     let citiesDropdown = useRef(null);
     let logoutPopup = useRef(null);
     const [cityList, setCityList] = useState([]);
-
+    const [toggled, setToggled] = useState(false);
     const getWeatherInfo = async (e) => {
         citiesDropdown.current.style.display = 'block';
         let res = await api.get('/city-list');
@@ -17,8 +18,8 @@ function Home() {
         }
     };
     return (
-        <div className="to-blue-500 from-cyan-400 bg-gradient-to-b h-screen text-white grid grid-flow-col grid-cols-12 overflow-hidden">
-            <div className="h-full bg-white shadow-xl col-span-2 border-r text-black text-center">
+        <div className="layout has-sidebar to-blue-500 from-cyan-400 bg-gradient-to-b  text-white  overflow-hidden">
+            <aside className={`sidebar break-point-md ${toggled ? "toggled" : ""} bg-white shadow-xl border-r text-black text-center`}>
                 <div className="font-bold text-5xl">LOGO</div>
                 <div className="font-bold text-left p-4">Main</div>
                 <div>
@@ -31,10 +32,11 @@ function Home() {
                         Forcast Report
                     </NavLink>
                 </div>
-            </div>
-            <div className="col-span-10">
-                <header className="bg-white shadow-lg text-black  p-2 flex items-center w-full">
-                    <i className="material-icons-outlined text-gray-400 cursor-pointer">menu</i>
+            </aside>
+            <div className="overlay" onClick={() => setToggled(false)}></div>
+            <div className="layout">
+                <header className="header  bg-white shadow-lg text-black  p-2 flex items-center">
+                    <i onClick={() => setToggled(true)} className="material-icons-outlined text-gray-400 cursor-pointer select-none">menu</i>
                     <div className="flex items-center font-bold text-xl mx-4 ml-auto cursor-pointer" onClick={getWeatherInfo}>
                         <i className="material-icons-outlined text-gray-600 cursor-pointer  mt-1">room</i>
                         Indore
@@ -44,7 +46,7 @@ function Home() {
                     <LogoutPopup ref={logoutPopup} />
                     <CitiesList cityList={cityList.list} ref={citiesDropdown} />
                 </header>
-                <div>
+                <div className="content">
                     <Outlet />
                 </div>
             </div>
